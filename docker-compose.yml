@@ -1,0 +1,15 @@
+# docker-compose.yml
+
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev # 開発用のDockerfileを指定
+    volumes:
+      - ./app:/app # ホスト側のappディレクトリをコンテナにマウント
+    ports:
+      - "8000:8000" # ホストの8000ポートをコンテナの8000ポートにマッピング
+    environment:
+      - PYTHONUNBUFFERED=1 # コンソール出力をリアルタイムで見るための設定
