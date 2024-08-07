@@ -8,6 +8,41 @@ Gyosekicom における統計情報計算処理を行うための FastApi サー
 docker compose up --build
 ```
 
+## デバッグ
+
+pdb を使ってブレークポイントを設定することができます。
+
+```python
+import pdb ## pdbのimport
+
+router = APIRouter()
+
+class Stats(BaseModel):
+    id: str
+
+@router.get("/", response_model=Stats)
+def read_stats(stats_service: StatsService = Depends()) -> Any:
+    """
+    Retrieve string
+    """
+    hoge = stats_service.create_matrix()
+    pdb.set_trace() ## ここ
+    return Stats(id=hoge)
+```
+
+この処理が実行されると処理が止まります。
+docker attach gyosekicom_stats-app-1
+でコンテナにアタッチして検証できます。
+
+```
+> /app/app/api/routes/stats.py(19)read_stats()
+-> return Stats(id=hoge)
+(Pdb)
+```
+
+となります。
+ここでいろいろ動作させることができます。
+
 ## デプロイ
 
 デプロイ先は AWS lambda に直接あげます。
