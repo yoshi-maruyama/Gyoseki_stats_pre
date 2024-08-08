@@ -1,3 +1,9 @@
 fastapi
 uvicorn[standard]
 mangum
+pandas
+numpy
+scipy
+yfinance
+jupyter
+tabulate
