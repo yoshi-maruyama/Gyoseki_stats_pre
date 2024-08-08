@@ -13,8 +13,6 @@ docker compose up --build
 pdb を使ってブレークポイントを設定することができます。
 
 ```python
-import pdb ## pdbのimport
-
 router = APIRouter()
 
 class Stats(BaseModel):
@@ -26,7 +24,7 @@ def read_stats(stats_service: StatsService = Depends()) -> Any:
     Retrieve string
     """
     hoge = stats_service.create_matrix()
-    pdb.set_trace() ## ここ
+    import pdb; pdb.set_trace() ## ここ
     return Stats(id=hoge)
 ```
 

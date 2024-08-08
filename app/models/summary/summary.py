@@ -602,31 +602,15 @@ def get_nasdaq_sp500_data(start_date):
 
     return combined_data
 
-# Example usage:
-start_date = "2023-07-31"
-historical_data = get_nasdaq_sp500_data(start_date)
-# print(historical_data.head())
-
-
-returns = historical_data['Nasdaq 100'].pct_change().dropna()
-# print(returns)
-
-
-benchmark = historical_data['S&P500'].pct_change().dropna()
-# print(benchmark)
-
-
 def get_metrix(data):
     # Example usage:
-    start_date = data["start_date"]
+    start_date = data.start_date
     end_date = dt.today().strftime('%Y-%m-%d')
     dates = pd.date_range(start=start_date, end=end_date)
 
-    returns = pd.Series(data["returns"], index=dates).pct_change().dropna()
-    benchmark = pd.Series(data["benchmark"], index=dates).pct_change().dropna()
+    returns = pd.Series(data.returns, index=dates).pct_change().dropna()
+    benchmark = pd.Series(data.benchmark, index=dates).pct_change().dropna()
 
-
-    print(returns)
     rf = 0.0
     compounded = True
     periods_per_year = 252

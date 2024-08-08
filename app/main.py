@@ -7,5 +7,9 @@ app = FastAPI()
 # APIRouterをインクルード
 app.include_router(api_router, prefix="/api")
 
+@app.get("/")
+def health_check():
+    return {"message": "Hello from stats server"}
+
 # Mangumアダプターを利用してAWS Lambda対応
 handler = Mangum(app)
