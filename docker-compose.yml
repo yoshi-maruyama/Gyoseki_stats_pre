@@ -13,3 +13,4 @@ services:
     stdin_open: true
     environment:
       - PYTHONUNBUFFERED=1
+      - ENV=development

@@ -8,6 +8,17 @@ Gyosekicom における統計情報計算処理を行うための FastApi サー
 docker compose up --build
 ```
 
+localhost:8000/docs
+を開いて swagger の画面が表示されることを確認してください。
+
+画面を開く際に basic 認証を求められると思いますが,
+下記で突破できるようになります。
+
+```
+username→user
+password→password
+```
+
 ## デバッグ
 
 pdb を使ってブレークポイントを設定することができます。
@@ -48,11 +59,19 @@ docker attach gyosekicom_stats-app-1
 gyoseki-stats-ecr リポジトリへ docker イメージをプッシュ
 gyoseki-stats lambda 関数で先の ECR の latest をアーキテクチャ arm64 でデプロイする
 関数 URL を発行する
-その URL で/item を叩く
+その URL で/ を叩く
 
 ```
 staging
 
-https://rft7t2ado2onqvjgovsoyayisq0nixso.lambda-url.ap-northeast-1.on.aws/item
+https://rft7t2ado2onqvjgovsoyayisq0nixso.lambda-url.ap-northeast-1.on.aws/
 https://rft7t2ado2onqvjgovsoyayisq0nixso.lambda-url.ap-northeast-1.on.aws/docs
+```
+
+環境変数には下記項目を設定してください
+
+```
+ENV
+STATS_BASIC_USRNAME
+STATS_BASIC_PASSWORD
 ```
