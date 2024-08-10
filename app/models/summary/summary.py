@@ -631,10 +631,4 @@ def get_metrix(data):
         strategy_title=strategy_title,
         match_dates=False,
     )[2:]
-
-    pd.set_option('display.max_rows', None)
-    pd.set_option('display.max_columns', None)
-    print("-" * 50)
-    print(mtrx)
-    print("-" * 50)
     return mtrx
