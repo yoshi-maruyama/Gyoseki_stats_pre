@@ -1,5 +1,5 @@
-from app.services.stats_service import StatsService
 from fastapi import APIRouter, Depends
+from app.services.stats_service import StatsService
 from app.schemas.summary import SummaryRequest, SummaryResponse
 
 router = APIRouter()
