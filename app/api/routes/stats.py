@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends
-from app.services.stats_service import StatsService
-from app.schemas.summary import SummaryRequest, SummaryResponse
+from app.services.create_metrics_service import CreateMetricsService
+from app.schemas.metrics import SummaryRequest, MetricsSummary
 
 router = APIRouter()
 
-@router.post("/", response_model=SummaryResponse)
-def summarise_stats(stats_request: SummaryRequest, stats_service: StatsService = Depends()) -> SummaryResponse:
+@router.post("/", response_model=MetricsSummary)
+def summarise_stats(stats_request: SummaryRequest, stats_service: CreateMetricsService = Depends()) -> MetricsSummary:
     """
     Retrieve "returns", "benchmark", and "start_date"
     and returns summarised statistics based on these values
     """
-    mtrx = stats_service.create_matrix(stats_request)
-    return SummaryResponse(data=mtrx)
+    mtrx_summary = stats_service.create_matrics(stats_request)
+    return mtrx_summary
