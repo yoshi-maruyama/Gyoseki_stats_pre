@@ -14,7 +14,7 @@ logger = setup_logger()
 app.add_exception_handler(Exception, create_exception_handler(logger))
 
 # APIRouterをインクルード
-app.include_router(api_router, prefix="/api")
+app.include_router(api_router, prefix="/api/v1")
 
 @app.get("/env")
 def health_check():
