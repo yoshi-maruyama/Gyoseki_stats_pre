@@ -8,7 +8,7 @@ import numpy as np
 from math import ceil as ceil, sqrt as sqrt
 from scipy.stats import norm as _norm, linregress as _linregress
 
-import app.models.summary.utils as _utils
+import app.libs.utils as _utils
 
 
 # ======== STATS ========

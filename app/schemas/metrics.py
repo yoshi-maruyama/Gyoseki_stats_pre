@@ -1,8 +1,10 @@
 from pydantic import BaseModel, validator
 from typing import List, Union
+from app.models.metrics.metrics import Metrics
 
-class SummaryResponse(BaseModel):
-    data: str
+class MetricsSummary(BaseModel):
+    returns: Metrics
+    benchmark: Metrics
 
 class SummaryRequest(BaseModel):
     returns: List[Union[float, int]]

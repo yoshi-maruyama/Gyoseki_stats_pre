@@ -6,7 +6,7 @@ import datetime as dt
 import pandas as pd
 import numpy as np
 import yfinance as yf
-import app.models.summary.stats as _stats
+import app.libs.stats as _stats
 import inspect
 
 
